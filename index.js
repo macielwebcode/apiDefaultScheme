@@ -2,7 +2,19 @@ require('dotenv').config();
 
 const express = require('express')
 const app = express();
+const routes = require('./routes')
+const path = require('path')
+const helmet = require('helmet')
+const csrf = require('csurf');
+const { globalMiddleware, checkCsrfError, checkCsrfToken } = require('./src/middlewares/middleware');
 
+app.use(helmet())
+
+app.use(express.urlencoded({
+    extended: true
+}));
+
+app.use(express.static(path.resolve(__dirname, 'public')))
 
 const moongose = require('mongoose');
 
@@ -16,16 +28,9 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 
-const routes = require('./routes')
-const path = require('path')
-const globalMiddleware = require('./src/middlewares/middleware');
 
 
-app.use(express.urlencoded({
-    extended: true
-}));
 
-app.use(express.static(path.resolve(__dirname, 'public')))
 
 const sessionOptions = session({
     secret: 'ba9343589g@#$',
@@ -44,7 +49,13 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 
 app.set('view engine', 'ejs');
 
-app.use(globalMiddleware)
+app.use(csrf());
+
+// MIDDLEWARES
+// app.use(globalMiddleware)
+// app.use(checkCsrfError)
+// app.use(checkCsrfToken)
+
 app.use(routes)
 
 app.on('conexão pronta', () => {
