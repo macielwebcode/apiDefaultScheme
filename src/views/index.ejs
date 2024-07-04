@@ -1,25 +1,12 @@
 <%- include('includes/head'); %>
 
+     <header class="cabecalho">
+        <%- include('includes/nav'); %>
+     </header>
 
-   <h2>
-        
-        <% if(typeof titulo !== 'undefined') { %>
-             <%= titulo %><br />
-        <% } else { %>
-            O título não foi enviado
-        <% } %>
-        <br />
-   </h2>
-
-   <p>
-        <% numeros.forEach(num => { %>
-            <%= num %><br />
-        <% }); %>
-   </p>
-
-   <p>
-
-   </p>
+     <%- include('includes/main'); %>
+  
+   
 
    <%- include('includes/footer'); %>
     
