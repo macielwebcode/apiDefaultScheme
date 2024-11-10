@@ -20,7 +20,7 @@ const moongose = require('mongoose');
 
 moongose.connect(process.env.CONNECTIONSTRING)
     .then(() => {
-        app.emit('pronto conectado');
+        app.emit('pronto conectado mongo');
     })
     .catch(e => console.log(e))
 
@@ -42,6 +42,7 @@ const sessionOptions = session({
         httpOnly: true
     }
 });
+
 app.use(sessionOptions);
 app.use(flash());
 
@@ -49,7 +50,7 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 
 app.set('view engine', 'ejs');
 
-// app.use(csrf());
+app.use(csrf());
 
 // MIDDLEWARES
 // app.use(globalMiddleware)

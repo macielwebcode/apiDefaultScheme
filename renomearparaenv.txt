@@ -1,0 +1,3 @@
+CONNECTIONSTRING=mongodb+srv://fmbergamo:IQiZJQs4bdHbWQzw@cluster0.kct6lze.mongodb.net/basededadosnomeaqui?retryWrites=true&w=majority&appName=Cluster0
+
+passwd:IQiZJQs4bdHbWQzw
