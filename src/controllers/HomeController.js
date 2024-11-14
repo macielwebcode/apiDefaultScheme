@@ -20,7 +20,7 @@ const MenuModel = require('../models/MenuModel');
     .then(dados => console.log(dados))
     .catch(e => console.log(e))
  */
-exports.homePage = (req, res) => {
+exports.index = (req, res) => {
     // req.session.usuario [ { nome: 'babi', logado: true }]
     
     res.render('index', {

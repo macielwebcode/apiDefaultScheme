@@ -6,7 +6,9 @@ const routes = require('./routes')
 const path = require('path')
 const helmet = require('helmet')
 const csrf = require('csurf');
-const { globalMiddleware, checkCsrfError, checkCsrfToken } = require('./src/middlewares/middleware');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
+
+//app.use(routes)
 
 app.use(helmet())
 
@@ -29,9 +31,6 @@ const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 
 
-
-
-
 const sessionOptions = session({
     secret: 'ba9343589g@#$',
     store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
@@ -50,14 +49,16 @@ app.set('views', path.resolve(__dirname, 'src', 'views'));
 
 app.set('view engine', 'ejs');
 
+
 app.use(csrf());
 
 // MIDDLEWARES
-// app.use(globalMiddleware)
-// app.use(checkCsrfError)
-// app.use(checkCsrfToken)
+app.use(middlewareGlobal);
+app.use(checkCsrfError);
+app.use(csrfMiddleware);
+app.use(routes);
 
-app.use(routes)
+
 
 app.on('conexão pronta', () => {
     console.log('conexao com mongo pronta')
