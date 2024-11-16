@@ -4,25 +4,28 @@
         <%- include('includes/nav'); %>
      </header>
 
-     <section class="content__login">
-        <form action="/login/create" method="POST">
-            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
-            <input type="text" name="email" placeholder="email">
-            <input type="text" name="password" placeholder="senha">
-            <button type="submit">enviar</button>
-        </form>
-     </section>
+     <div class="all_forms">
 
-     <section class="content__login">
-        <form action="/login/login" method="POST">
-            <input type="hidden" name="_csrf" value=<%= csrfToken %>>
-            <input type="text" name="email" placeholder="email">
-            <input type="text" name="password" placeholder="senha">
-            <button type="submit">enviar</button>
-        </form>
-     </section>
+         <section class="content__login">
+            <form action="/login/create" method="POST" class="form__register">
+                  <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                  <input type="text" name="email" placeholder="email">
+                  <input type="text" name="password" placeholder="senha">
+                  <button type="submit">enviar</button>
+            </form>
+         </section>
 
-   
+         <section class="content__login">
+            <form action="/login/login" method="POST" class="form__login">
+                  <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                  <input type="text" name="email" placeholder="email">
+                  <input type="text" name="password" placeholder="senha">
+                  <button type="submit">enviar</button>
+            </form>
+         </section>
+         
+      </div>
+         
 
    <%- include('includes/footer'); %>
     

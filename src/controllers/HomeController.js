@@ -1,5 +1,6 @@
 const HomeModel = require('../models/HomeModel');
 const MenuModel = require('../models/MenuModel');
+const ContatoModel = require('../models/ContatoModel')
 
 /*HomeModel.create({
     titulo: 'titulo de teste numero hoje novembro',
@@ -20,13 +21,12 @@ const MenuModel = require('../models/MenuModel');
     .then(dados => console.log(dados))
     .catch(e => console.log(e))
  */
-exports.index = (req, res) => {
+exports.index = async (req, res) => {
     // req.session.usuario [ { nome: 'babi', logado: true }]
-    
-    res.render('index', {
-        titulo: 'titulo da pagina',
-        // numeros: [0, 1, 3, 4, 5]
-    });
+    const contatos = await ContatoModel.getContatos()
+    console.log('ver contatos', contatos)
+    // res.render('index');
+    res.render('index', { contatos });
     return;
 }
 

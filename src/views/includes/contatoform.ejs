@@ -1,0 +1,30 @@
+
+<% if(contato._id) { %>
+<form action="/contato/edit/<%= contato._id %>" method="POST" class="form">
+<% } else { %>
+<form action="/contato/create" method="POST" class="form">
+<% } %>        
+    <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+
+    <div class="form__content">
+        <label>Nome</label>
+        <input type="text" value="<%= contato.nome %>" name="nome" placeholder="Seu melhor nome aqui">
+    </div>
+    
+    <div class="form__content">
+        <label>Sobrenome</label>
+        <input type="text" value="<%= contato.sobrenome %>" name="sobrenome" placeholder="Seu melhor sobrenome aqui">
+    </div>
+       
+    <div class="form__content">
+        <label>E-mail</label>
+        <input type="email" value="<%= contato.email %>" name="email" placeholder="Seu melhor e-mail aqui">
+    </div>
+
+    <div class="form__content"></div>
+        <label>Telefone</label>
+        <input type="tel" value="<%= contato.telefone %>" name="telefone" placeholder="Seu melhor telefone aqui">
+    </div>
+
+    <button type="submit" class="btn__forms">Enviar</button>
+</form>

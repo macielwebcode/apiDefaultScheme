@@ -174,3 +174,36 @@ footer{
     color: #ffffff;
     font-weight: 700;
 }
+
+/* área form*/
+
+.all_forms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.875rem;
+    padding: 4%
+}
+
+.form{
+    display: flex;
+    border-radius: 20px;
+    border: 1px solid #cacaca;
+    gap: 10px;
+    padding: 4%;
+    flex-direction: column;
+}
+
+.form__content{
+    display: flex;
+    flex-direction: column;
+}
+
+.btn__forms{
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    color: #ffffff;
+    background-color: rgb(6, 30, 60, 1);
+    border-radius: 20px;
+    border-style: none;
+}
